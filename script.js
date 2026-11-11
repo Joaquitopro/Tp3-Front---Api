@@ -9,11 +9,10 @@ let imagenes = [
     "https://images.unsplash.com/photo-1502877338535-766e1452684a?w=600"
 ];
 
-async function cargarAutos() {
+fetch("https://api.carsdataset.com/api/v1/preview/search?page=1&page_size=30")
 
-    const respuesta = await fetch("https://api.carsdataset.com/api/v1/preview/search?page=1&page_size=30");
-
-    const datos = await respuesta.json();
+    .then(respuesta => respuesta.json())
+        .then(datos => {
 
     for (let i = 0; i < datos.results.length; i++) {
 
@@ -38,9 +37,6 @@ async function cargarAutos() {
 
             </div>
         `;
-
     }
 
-}
-
-cargarAutos();
+});
